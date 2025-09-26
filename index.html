@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Santhosh S S | Electronics & Communication Engineer</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --background-color: #ecf0f1;
+            --card-background: #ffffff;
+            --text-color: #34495e;
+            --light-text: #7f8c8d;
+            --shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- Header & Navigation --- */
+        header {
+            background: var(--card-background);
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 1.8em;
+            color: var(--primary-color);
+        }
+
+        nav a {
+            color: var(--primary-color);
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h2 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.8em;
+            margin: 0 15px;
+            transition: transform 0.3s;
+        }
+        
+        .social-links a:hover {
+            transform: scale(1.2);
+        }
+
+        /* --- Section Styling --- */
+        section {
+            padding: 60px 0;
+        }
+
+        h2.section-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: var(--primary-color);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-background);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .card h3 {
+            margin-top: 0;
+            color: var(--secondary-color);
+        }
+
+        /* --- About Section --- */
+        #about p {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1em;
+        }
+
+        /* --- Skills Section --- */
+        .skill {
+            margin-bottom: 15px;
+        }
+        .skill p {
+            margin: 0 0 5px 0;
+            font-weight: bold;
+        }
+        .progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            height: 20px;
+        }
+        .progress {
+            background-color: var(--secondary-color);
+            height: 100%;
+            border-radius: 5px;
+            text-align: right;
+            color: white;
+            padding-right: 5px;
+            line-height: 20px;
+        }
+        
+        /* --- Projects Section --- */
+        .project-card .tech {
+            margin-top: 15px;
+            font-size: 0.9em;
+            color: var(--light-text);
+        }
+        .project-card .role {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        .project-card a {
+            display: inline-block;
+            margin-top: 15px;
+            text-decoration: none;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        /* --- Timeline Section (Education & Certs) --- */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background-color: var(--secondary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1.5px;
+        }
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-container.left {
+            left: 0;
+        }
+        .timeline-container.right {
+            left: 50%;
+        }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 4px solid var(--secondary-color);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .right::after {
+            left: -10px;
+        }
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: var(--shadow);
+        }
+         .timeline-content h3 {
+            margin-top: 0;
+            color: var(--secondary-color);
+        }
+
+        /* --- Contact Section --- */
+        #contact .contact-info {
+            text-align: center;
+            font-size: 1.2em;
+        }
+         #contact .contact-info p {
+            margin: 10px 0;
+         }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+            }
+            nav {
+                margin-top: 10px;
+            }
+            .timeline::after {
+                left: 20px;
+            }
+            .timeline-container {
+                width: 100%;
+                padding-left: 60px;
+                padding-right: 15px;
+            }
+            .timeline-container.left, .timeline-container.right {
+                left: 0%;
+            }
+            .timeline-container.left::after, .timeline-container.right::after {
+                left: 10px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <h1>Santhosh S S</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#education">Education</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h2>Electronics & Communication Engineer</h2>
+                <p>Specializing in IoT, Embedded Systems, and PCB Design. Passionate about aviation and airport operations.</p>
+                <div class="social-links">
+                    <a href="https://github.com/santhus3j" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/santhosh-s-s-6847b01b7" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:santhutsk3@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <section id="about">
+                <h2 class="section-title">About Me</h2>
+                <p>
+                    I am a dedicated and skilled Electronics & Communication Engineering student at G M Institute of Technology. My core objective is to build a strong financial foundation for my family through a challenging and rewarding career. I have a strong foundation in IoT, Embedded Systems, and programming languages like Python and C++. My hands-on project experience, including leading a government-funded project, demonstrates my leadership and technical abilities.
+                </p>
+            </section>
+
+            <hr>
+
+            <section id="skills">
+                <h2 class="section-title">Technical Skills 🛠️</h2>
+                <div class="grid">
+                    <div class="card">
+                        <h3>Core Competencies</h3>
+                        <div class="skill">
+                            <p>IoT & Embedded Systems</p>
+                            <div class="progress-bar"><div class="progress" style="width: 80%;">80%</div></div>
+                        </div>
+                        <div class="skill">
+                            <p>PCB Design & Fabrication</p>
+                            <div class="progress-bar"><div class="progress" style="width: 75%;">75%</div></div>
+                        </div>
+                         <div class="skill">
+                            <p>OBD & CAN Protocol</p>
+                            <div class="progress-bar"><div class="progress" style="width: 70%;">70%</div></div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h3>Programming Languages</h3>
+                         <div class="skill">
+                            <p>Python</p>
+                            <div class="progress-bar"><div class="progress" style="width: 70%;">70%</div></div>
+                        </div>
+                        <div class="skill">
+                            <p>C++</p>
+                            <div class="progress-bar"><div class="progress" style="width: 65%;">65%</div></div>
+                        </div>
+                    </div>
+                     <div class="card">
+                        <h3>Tools & Technologies</h3>
+                        <ul>
+                            <li>Arduino & Raspberry Pi</li>
+                            <li>Pycharm, Keil uVision, STMCubeIDE</li>
+                            <li>Computer Vision & NIR Spectroscopy</li>
+                            <li>CircuitMaker & Flash Magic</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <hr>
+
+            <section id="projects">
+                <h2 class="section-title">My Projects 🚀</h2>
+                <div class="grid">
+                    <div class="card project-card">
+                        <h3>Fruit Spoilage Detection</h3>
+                        <p class="role">Role: Team Lead</p>
+                        <p>A government-funded project to develop a smart device for early detection of fruit spoilage using advanced sensors, computer vision, and NIR spectroscopy to minimize post-harvest losses.</p>
+                        <p class="tech"><b>Tech:</b> Raspberry Pi, Pycharm, Computer Vision, Gas Sensors</p>
+                    </div>
+                    <div class="card project-card">
+                        <h3>CAR BCM and Data Visualization</h3>
+                        <p class="role">Role: Lead</p>
+                        <p>Developed a Car Body Control Module (BCM) to monitor functions like wipers, doors, and headlamps using CAN protocol and an OBD scanner, including a data visualization tool.</p>
+                        <p class="tech"><b>Tech:</b> CAN, Arduino, Pycharm, STMCubeIDE</p>
+                    </div>
+                    <div class="card project-card">
+                        <h3>Microcontroller 8051 Projects</h3>
+                        <p class="role">Role: Team Lead</p>
+                        <p>Hands-on academic projects using the 8051 microcontroller, including developing systems for alcohol detection and soil moisture monitoring.</p>
+                        <p class="tech"><b>Tech:</b> Keil uVision, Flash Magic</p>
+                    </div>
+                </div>
+                 <div style="text-align: center; margin-top: 30px;">
+                    <a href="https://github.com/santhus3j" target="_blank" style="padding: 10px 20px; background-color: var(--secondary-color); color: white; text-decoration: none; border-radius: 5px;">View More on GitHub</a>
+                </div>
+            </section>
+            
+            <hr>
+
+            <section id="education">
+                <h2 class="section-title">Education & Certifications 🎓</h2>
+                <div class="timeline">
+                    <div class="timeline-container left">
+                        <div class="timeline-content">
+                            <h3>B.E. Electronics & Communication</h3>
+                            <p><b>G M Institute of Technology, Davangere</b></p>
+                            <p>Expected: Jun 2026 | Current CGPA: 7.00</p>
+                        </div>
+                    </div>
+                     <div class="timeline-container right">
+                        <div class="timeline-content">
+                            <h3>NPTEL Certifications</h3>
+                            <p><b>Issued: Mar 2025</b></p>
+                            <p>Integrated Circuits, Op-Amps & Manufacturing<br>Joy of Computing using Python</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container left">
+                        <div class="timeline-content">
+                            <h3>Class 12 / INTER (PCMB)</h3>
+                            <p><b>Siddaganga PU College, Davangere</b></p>
+                            <p>Completed: Apr 2022 | Score: 84.50%</p>
+                        </div>
+                    </div>
+                    <div class="timeline-container right">
+                        <div class="timeline-content">
+                            <h3>Class 10 / METRIC</h3>
+                            <p><b>Siddaganga School, Davangere</b></p>
+                            <p>Completed: May 2020 | Score: 88.80%</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <hr>
+            
+            <section id="contact">
+                <h2 class="section-title">Get In Touch 📧</h2>
+                <div class="contact-info">
+                    <p>I'm currently seeking new opportunities. Feel free to reach out!</p>
+                    <p>📧 <a href="mailto:santhutsk3@gmail.com">santhutsk3@gmail.com</a></p>
+                    <p>📞 +91 8197133537</p>
+                    <p>📍 Davangere, Karnataka, India</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Santhosh S S. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
