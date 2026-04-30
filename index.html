@@ -1,266 +1,927 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Santhosh S S | Python & Data Engineer</title>
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santhosh S S — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;1,300&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0a0a0f;
+    --paper: #f5f3ee;
+    --accent: #d4501a;
+    --accent2: #1a3d6b;
+    --muted: #6b6860;
+    --line: #d8d4cc;
+    --card: #ffffff;
+    --tag-bg: #eae7e0;
+  }
 
-  <style>
-    :root {
-      --primary: #6366f1; /* Indigo */
-      --secondary: #0ea5e9; /* Sky Blue */
-      --dark-bg: #0f172a;
-      --card-bg: rgba(30, 41, 59, 0.7);
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --accent: #10b981; /* Emerald */
-    }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    * { box-sizing: border-box; scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; }
 
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: var(--dark-bg);
-      background-image: radial-gradient(circle at 0% 0%, #1e293b 0%, transparent 50%), 
-                        radial-gradient(circle at 100% 100%, #1e1b4b 0%, transparent 50%);
-      color: var(--text-main);
-      line-height: 1.6;
-    }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    overflow-x: hidden;
+    cursor: none;
+  }
 
-    /* --- Header --- */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(15, 23, 42, 0.8);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(255,255,255,0.1);
-      padding: 15px 10%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  /* Custom cursor */
+  .cursor {
+    position: fixed;
+    width: 12px; height: 12px;
+    background: var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.1s ease, width 0.2s ease, height 0.2s ease, background 0.2s ease;
+    mix-blend-mode: multiply;
+  }
+  .cursor.expand {
+    width: 40px; height: 40px;
+    background: var(--accent2);
+    opacity: 0.4;
+  }
 
-    header h1 { font-size: 1.4rem; font-weight: 800; margin: 0; background: linear-gradient(to right, #818cf8, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 20px 48px;
+    background: rgba(245,243,238,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+  }
+  .nav-logo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+  .nav-logo span { color: var(--accent); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-decoration: none;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
 
-    nav a { margin-left: 20px; text-decoration: none; font-size: 0.9rem; font-weight: 500; color: var(--text-muted); transition: 0.3s; }
-    nav a:hover { color: var(--primary); }
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 24px;
+    opacity: 0;
+    animation: fadeUp 0.6s ease 0.2s forwards;
+  }
+  .hero-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 5.5vw, 5.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    color: var(--ink);
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.35s forwards;
+  }
+  .hero-name .line2 { color: var(--accent2); }
+  .hero-role {
+    margin-top: 28px;
+    font-size: 1.1rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.6;
+    max-width: 440px;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.5s forwards;
+  }
+  .hero-role strong { color: var(--ink); font-weight: 500; }
+  .hero-cta {
+    margin-top: 44px;
+    display: flex; gap: 16px; flex-wrap: wrap;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.65s forwards;
+  }
+  .btn-primary {
+    display: inline-block;
+    padding: 14px 32px;
+    background: var(--accent);
+    color: #fff;
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border: 2px solid var(--accent);
+    transition: background 0.25s, color 0.25s, transform 0.2s;
+  }
+  .btn-primary:hover { background: transparent; color: var(--accent); transform: translateY(-2px); }
+  .btn-secondary {
+    display: inline-block;
+    padding: 14px 32px;
+    background: transparent;
+    color: var(--ink);
+    font-family: 'Syne', sans-serif;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border: 2px solid var(--ink);
+    transition: background 0.25s, color 0.25s, transform 0.2s;
+  }
+  .btn-secondary:hover { background: var(--ink); color: var(--paper); transform: translateY(-2px); }
 
-    /* --- Hero Section --- */
-    .hero {
-      padding: 120px 20px;
-      text-align: center;
-      max-width: 900px;
-      margin: 0 auto;
-    }
+  .hero-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-graphic {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-graphic svg {
+    width: 90%;
+    max-width: 520px;
+    opacity: 0;
+    animation: fadeIn 1s ease 0.8s forwards;
+  }
+  .hero-scroll-hint {
+    position: absolute;
+    bottom: 40px;
+    left: 80px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    opacity: 0;
+    animation: fadeUp 0.5s ease 1.2s forwards;
+  }
+  .scroll-line {
+    width: 48px; height: 1px;
+    background: var(--muted);
+  }
 
-    .hero h2 { font-size: 3.5rem; font-weight: 800; margin-bottom: 15px; letter-spacing: -1px; }
-    .hero p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 30px; }
+  /* STATS BAR */
+  .stats-bar {
+    background: var(--ink);
+    color: var(--paper);
+    display: flex;
+    justify-content: space-around;
+    padding: 36px 80px;
+    gap: 16px;
+  }
+  .stat-item {
+    text-align: center;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .stat-item.visible { animation: fadeUp 0.5s ease forwards; }
+  .stat-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 800;
+    color: var(--accent);
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245,243,238,0.5);
+    margin-top: 4px;
+  }
 
-    .btn {
-      display: inline-block;
-      padding: 12px 28px;
-      background: var(--primary);
-      color: white;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
-    }
-    .btn:hover { transform: translateY(-3px); background: #4f46e5; }
+  /* SECTIONS */
+  section {
+    padding: 100px 80px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+    color: var(--ink);
+    margin-bottom: 56px;
+  }
 
-    .hero-links { margin-top: 30px; }
-    .hero-links a { color: var(--text-muted); font-size: 1.8rem; margin: 0 15px; transition: 0.3s; }
-    .hero-links a:hover { color: var(--secondary); transform: scale(1.1); }
+  /* SKILLS */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2px;
+    background: var(--line);
+    border: 2px solid var(--line);
+  }
+  .skill-card {
+    background: var(--card);
+    padding: 28px 28px;
+    transition: background 0.2s;
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  .skill-card.visible { animation: fadeUp 0.45s ease forwards; }
+  .skill-card:hover { background: var(--ink); }
+  .skill-card:hover .skill-cat { color: var(--accent); }
+  .skill-card:hover .skill-tags .tag { background: rgba(255,255,255,0.1); color: var(--paper); }
+  .skill-card:hover .skill-icon { color: var(--accent); }
+  .skill-icon {
+    font-size: 1.4rem;
+    margin-bottom: 14px;
+    color: var(--accent2);
+    transition: color 0.2s;
+  }
+  .skill-cat {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    margin-bottom: 12px;
+    transition: color 0.2s;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag {
+    background: var(--tag-bg);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    padding: 4px 10px;
+    letter-spacing: 0.04em;
+    transition: background 0.2s, color 0.2s;
+  }
 
-    /* --- Common Sections --- */
-    section { padding: 80px 10%; }
-    .title { font-size: 2rem; margin-bottom: 40px; position: relative; }
-    .title::after { content: ''; display: block; width: 50px; height: 4px; background: var(--primary); margin-top: 10px; border-radius: 2px; }
+  /* EXPERIENCE */
+  .timeline { position: relative; padding-left: 32px; }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 0;
+    width: 1px;
+    background: var(--line);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 52px;
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+  .timeline-item.visible { animation: fadeLeft 0.5s ease forwards; }
+  .timeline-dot {
+    position: absolute;
+    left: -37px; top: 6px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 2px solid var(--paper);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  .timeline-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 6px;
+  }
+  .timeline-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: var(--ink);
+  }
+  .timeline-company {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 14px;
+    font-weight: 300;
+  }
+  .timeline-bullets { list-style: none; }
+  .timeline-bullets li {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+    padding-left: 16px;
+    position: relative;
+    margin-bottom: 4px;
+  }
+  .timeline-bullets li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--accent);
+    font-size: 0.8rem;
+  }
 
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+  }
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .project-card.visible { animation: fadeUp 0.5s ease forwards; }
+  .project-card:hover { transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.1); }
+  .project-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .project-card:hover::before { transform: scaleX(1); }
+  .project-num {
+    font-family: 'Syne', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--line);
+    line-height: 1;
+    margin-bottom: 12px;
+    letter-spacing: -0.04em;
+  }
+  .project-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--ink);
+    margin-bottom: 12px;
+  }
+  .project-desc {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 20px;
+  }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 6px; }
+  .stack-tag {
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    padding: 4px 10px;
+    letter-spacing: 0.04em;
+  }
 
-    /* --- Cards --- */
-    .card {
-      background: var(--card-bg);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: 16px;
-      padding: 30px;
-      transition: 0.4s;
-      backdrop-filter: blur(5px);
-    }
-    .card:hover { 
-      transform: translateY(-10px); 
-      border-color: rgba(99, 102, 241, 0.4);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    }
+  /* EDUCATION */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; background: var(--line); border: 2px solid var(--line); }
+  .edu-card {
+    background: var(--card);
+    padding: 36px 32px;
+    opacity: 0;
+  }
+  .edu-card.visible { animation: fadeUp 0.5s ease forwards; }
+  .edu-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--accent);
+    letter-spacing: 0.1em;
+    margin-bottom: 10px;
+  }
+  .edu-degree {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .edu-inst {
+    font-size: 0.82rem;
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  .edu-grade {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--ink);
+  }
+  .edu-grade-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+  }
 
-    /* --- Skill Badges --- */
-    .badge-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
-    .badge {
-      background: rgba(99, 102, 241, 0.1);
-      color: #a5b4fc;
-      padding: 5px 12px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      border: 1px solid rgba(99, 102, 241, 0.2);
-    }
+  /* CERTIFICATIONS */
+  .certs-list { display: flex; flex-wrap: wrap; gap: 12px; }
+  .cert-pill {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    padding: 14px 20px;
+    font-size: 0.85rem;
+    color: var(--ink);
+    transition: border-color 0.2s, transform 0.2s;
+    opacity: 0;
+  }
+  .cert-pill.visible { animation: fadeUp 0.4s ease forwards; }
+  .cert-pill:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .cert-pill::before {
+    content: '✦';
+    color: var(--accent);
+    font-size: 0.7rem;
+  }
 
-    /* --- Project Specifics --- */
-    .project-card h3 { color: var(--secondary); margin-top: 0; }
-    .tech-stack { color: var(--accent); font-weight: 600; font-size: 0.85rem; margin-top: 15px; display: block; }
+  /* CONTACT */
+  .contact-section {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 100px 80px;
+    text-align: center;
+  }
+  .contact-section .section-label { color: var(--accent); }
+  .contact-section .section-title { color: var(--paper); margin-bottom: 16px; }
+  .contact-sub {
+    font-size: 1rem;
+    color: rgba(245,243,238,0.5);
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+  .contact-links { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+  .contact-link {
+    display: flex; align-items: center; gap: 8px;
+    padding: 14px 28px;
+    border: 1px solid rgba(245,243,238,0.2);
+    color: var(--paper);
+    text-decoration: none;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); background: rgba(212,80,26,0.1); }
 
-    /* --- Experience Timeline --- */
-    .exp-item { border-left: 2px solid var(--primary); padding-left: 20px; margin-bottom: 20px; }
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    border-top: 1px solid rgba(245,243,238,0.08);
+    padding: 24px 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  footer p {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    color: rgba(245,243,238,0.3);
+    letter-spacing: 0.06em;
+  }
 
-    footer {
-      text-align: center;
-      padding: 40px;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      color: var(--text-muted);
-      font-size: 0.9rem;
-    }
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeLeft {
+    from { opacity: 0; transform: translateX(-16px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-14px); }
+  }
+  @keyframes spin-slow {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+  }
+  @keyframes pulse-ring {
+    0% { r: 120; opacity: 0.6; }
+    100% { r: 160; opacity: 0; }
+  }
 
-    @media (max-width: 768px) {
-      .hero h2 { font-size: 2.2rem; }
-      header { flex-direction: column; gap: 15px; text-align: center; }
-      nav a { margin: 0 10px; }
-    }
-  </style>
+  .floating { animation: float 4s ease-in-out infinite; }
+  .spinning { animation: spin-slow 18s linear infinite; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-links { display: none; }
+    .hero { grid-template-columns: 1fr; min-height: auto; padding: 100px 24px 60px; }
+    .hero-left { padding: 0; }
+    .hero-right { display: none; }
+    .hero-scroll-hint { left: 24px; }
+    .stats-bar { padding: 36px 24px; gap: 8px; flex-wrap: wrap; }
+    section { padding: 60px 24px; }
+    .edu-grid { grid-template-columns: 1fr; }
+    .contact-section { padding: 60px 24px; }
+    footer { padding: 20px 24px; flex-direction: column; gap: 8px; text-align: center; }
+  }
+</style>
 </head>
-
 <body>
 
-<header>
-  <h1>SANTHOSH S S</h1>
-  <nav>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
+<div class="cursor" id="cursor"></div>
 
-<section class="hero">
-  <h2>Building Intelligence <br><span style="color: var(--secondary)">through Code & Data.</span></h2>
-  <p>Electronics & Communication Engineer (2026) specializing in Python, Machine Learning, and Full-Stack IoT solutions.</p>
-  <a href="mailto:santhutsk3@gmail.com" class="btn">Get In Touch</a>
-  
-  <div class="hero-links">
-    <a href="https://github.com/santhus3j" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-    <a href="https://www.linkedin.com/in/santhosh-s-s-6847b01b7" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-    <a href="mailto:santhutsk3@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-  </div>
-</section>
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">S<span>.</span>SS</a>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
 
-<section id="about">
-  <div class="container">
-    <h2 class="title">About Me</h2>
-    <div class="card">
-      <p>I bridge the gap between <strong>Hardware and Software</strong>. My passion lies in creating production-ready Python applications, high-performance ML pipelines, and scalable ERP platforms. With hands-on experience in Docker and Linux environments, I build tools that are as robust as they are efficient.</p>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <p class="hero-tag">// Engineering Analyst · Systems Engineer · Fresher 2026</p>
+    <h1 class="hero-name">
+      Santhosh<br>
+      <span class="line2">S S</span>
+    </h1>
+    <p class="hero-role">
+      ECE graduate with hands-on experience in <strong>Python, Machine Learning, ERP systems,</strong> and <strong>Docker-based deployments</strong>. Building enterprise-grade solutions. Targeting <strong>Infosys</strong>.
+    </p>
+    <div class="hero-cta">
+      <a href="#projects" class="btn-primary">View Work</a>
+      <a href="#contact" class="btn-secondary">Get in Touch</a>
     </div>
   </div>
-</section>
 
+  <div class="hero-right">
+    <div class="hero-graphic">
+      <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+        <!-- Outer spinning ring -->
+        <g class="spinning" style="transform-origin:250px 250px">
+          <circle cx="250" cy="250" r="195" fill="none" stroke="#d8d4cc" stroke-width="1" stroke-dasharray="6 12"/>
+        </g>
+        <!-- Static rings -->
+        <circle cx="250" cy="250" r="155" fill="none" stroke="#eae7e0" stroke-width="1.5"/>
+        <circle cx="250" cy="250" r="100" fill="none" stroke="#d8d4cc" stroke-width="1"/>
+        <!-- Center -->
+        <circle cx="250" cy="250" r="72" fill="#1a3d6b"/>
+        <circle cx="250" cy="250" r="72" fill="none" stroke="#d4501a" stroke-width="2"/>
+        <!-- Initials -->
+        <text x="250" y="244" text-anchor="middle" font-family="Syne, sans-serif" font-size="22" font-weight="800" fill="#f5f3ee" letter-spacing="-1">SSS</text>
+        <text x="250" y="266" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" fill="rgba(245,243,238,0.5)" letter-spacing="3">ECE · 2026</text>
+
+        <!-- Floating tech nodes -->
+        <g class="floating" style="animation-delay:0s">
+          <circle cx="250" cy="55" r="28" fill="#d4501a"/>
+          <text x="250" y="52" text-anchor="middle" font-family="DM Mono" font-size="7" fill="white" letter-spacing="1">PYTHON</text>
+          <text x="250" y="63" text-anchor="middle" font-family="DM Mono" font-size="7" fill="rgba(255,255,255,0.7)">ML</text>
+        </g>
+        <g class="floating" style="animation-delay:0.6s">
+          <circle cx="419" cy="155" r="26" fill="#1a3d6b"/>
+          <text x="419" y="152" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="white" letter-spacing="0.5">DOCKER</text>
+          <text x="419" y="163" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="rgba(255,255,255,0.7)">ERP</text>
+        </g>
+        <g class="floating" style="animation-delay:1.2s">
+          <circle cx="399" cy="358" r="26" fill="#d4501a" opacity="0.85"/>
+          <text x="399" y="355" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="white">YOLO</text>
+          <text x="399" y="366" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="rgba(255,255,255,0.7)">PyTorch</text>
+        </g>
+        <g class="floating" style="animation-delay:0.9s">
+          <circle cx="250" cy="440" r="26" fill="#1a3d6b" opacity="0.9"/>
+          <text x="250" y="437" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="white">POSTGRES</text>
+          <text x="250" y="448" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="rgba(255,255,255,0.7)">SQL</text>
+        </g>
+        <g class="floating" style="animation-delay:0.3s">
+          <circle cx="81" cy="358" r="26" fill="#d4501a" opacity="0.85"/>
+          <text x="81" y="355" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="white">DJANGO</text>
+          <text x="81" y="366" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="rgba(255,255,255,0.7)">REST</text>
+        </g>
+        <g class="floating" style="animation-delay:1.5s">
+          <circle cx="101" cy="155" r="26" fill="#1a3d6b"/>
+          <text x="101" y="152" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="white">LINUX</text>
+          <text x="101" y="163" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="rgba(255,255,255,0.7)">R-Pi</text>
+        </g>
+
+        <!-- Connector lines -->
+        <line x1="250" y1="83" x2="250" y2="150" stroke="#d8d4cc" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="393" y1="175" x2="345" y2="208" stroke="#d8d4cc" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="375" y1="340" x2="330" y2="308" stroke="#d8d4cc" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="250" y1="414" x2="250" y2="350" stroke="#d8d4cc" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="107" y1="340" x2="170" y2="308" stroke="#d8d4cc" stroke-width="1" stroke-dasharray="3 4"/>
+        <line x1="127" y1="175" x2="175" y2="208" stroke="#d8d4cc" stroke-width="1" stroke-dasharray="3 4"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="hero-scroll-hint">
+    <div class="scroll-line"></div>
+    <span>SCROLL TO EXPLORE</span>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat-item">
+    <div class="stat-num">3+</div>
+    <div class="stat-label">Projects Delivered</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">2</div>
+    <div class="stat-label">Internships</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">7.40</div>
+    <div class="stat-label">CGPA / 10</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">5+</div>
+    <div class="stat-label">Certifications</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">10+</div>
+    <div class="stat-label">Tech Skills</div>
+  </div>
+</div>
+
+<!-- SKILLS -->
 <section id="skills">
-  <div class="container">
-    <h2 class="title">Technical Arsenal</h2>
-    <div class="grid">
-      <div class="card">
-        <h3><i class="fas fa-code"></i> Software</h3>
-        <div class="badge-container">
-          <span class="badge">Python</span> <span class="badge">Django</span>
-          <span class="badge">PostgreSQL</span> <span class="badge">MongoDB</span>
-          <span class="badge">Odoo ERP</span> <span class="badge">Docker</span>
-        </div>
+  <p class="section-label">// 01 — Capabilities</p>
+  <h2 class="section-title">Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-icon">⌨</div>
+      <div class="skill-cat">Programming Languages</div>
+      <div class="skill-tags">
+        <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">C++</span><span class="tag">PostgreSQL</span><span class="tag">Oracle SQL</span>
       </div>
-      <div class="card">
-        <h3><i class="fas fa-brain"></i> AI & Data</h3>
-        <div class="badge-container">
-          <span class="badge">Machine Learning</span> <span class="badge">YOLO</span>
-          <span class="badge">TensorFlow</span> <span class="badge">OpenCV</span>
-          <span class="badge">Data Analytics</span>
-        </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🌐</div>
+      <div class="skill-cat">Web & Backend</div>
+      <div class="skill-tags">
+        <span class="tag">Django</span><span class="tag">REST APIs</span><span class="tag">Odoo ERP</span><span class="tag">Web Dev</span>
       </div>
-      <div class="card">
-        <h3><i class="fas fa-microchip"></i> Hardware/IoT</h3>
-        <div class="badge-container">
-          <span class="badge">Raspberry Pi</span> <span class="badge">Arduino</span>
-          <span class="badge">PCB Design</span> <span class="badge">8051</span>
-          <span class="badge">NIR Sensors</span>
-        </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🤖</div>
+      <div class="skill-cat">Data Science & ML</div>
+      <div class="skill-tags">
+        <span class="tag">Scikit-learn</span><span class="tag">TensorFlow</span><span class="tag">YOLOv5</span><span class="tag">PyTorch</span><span class="tag">OpenCV</span><span class="tag">Pandas</span><span class="tag">NumPy</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🛠</div>
+      <div class="skill-cat">DevOps & Tools</div>
+      <div class="skill-tags">
+        <span class="tag">Docker</span><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Jira</span><span class="tag">Streamlit</span><span class="tag">VS Code</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🗄</div>
+      <div class="skill-cat">Databases</div>
+      <div class="skill-tags">
+        <span class="tag">PostgreSQL</span><span class="tag">Oracle SQL Dev</span><span class="tag">MongoDB</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">⚙</div>
+      <div class="skill-cat">Hardware & OS</div>
+      <div class="skill-tags">
+        <span class="tag">Raspberry Pi</span><span class="tag">Arduino</span><span class="tag">Debian Linux</span><span class="tag">8051 MCU</span><span class="tag">PCB Design</span>
       </div>
     </div>
   </div>
 </section>
 
-<section id="experience">
-  <div class="container">
-    <h2 class="title">Professional Experience</h2>
-    <div class="card">
-      <div class="exp-item">
-        <h3>Odoo Website Developer – Intern</h3>
-        <p style="color: var(--secondary); font-weight: 600;">FudoTech.com | July 2025 – Aug 2025</p>
-        <ul>
-          <li>Engineered <strong>refurbish.live</strong> ERP platform features for CRM and Inventory.</li>
-          <li>Deployed isolated environments using <strong>Docker</strong> for seamless scaling.</li>
-          <li>Leveraged Generative AI to automate content creation and workflow optimization.</li>
-        </ul>
-      </div>
+<!-- EXPERIENCE -->
+<section id="experience" style="background: #faf9f5; max-width:100%; padding: 100px 0;">
+<div style="max-width:1280px; margin:0 auto; padding: 0 80px;">
+  <p class="section-label">// 02 — Journey</p>
+  <h2 class="section-title">Work Experience</h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">AUG 2025 — PRESENT</div>
+      <div class="timeline-title">Python Data Science Trainee</div>
+      <div class="timeline-company">QSpiders · Bengaluru, Karnataka</div>
+      <ul class="timeline-bullets">
+        <li>Implementing end-to-end data preprocessing pipelines, visualization dashboards, and ML model evaluation using Scikit-learn, Pandas, and NumPy.</li>
+        <li>Applying supervised and unsupervised ML techniques with feature engineering to improve model accuracy on structured datasets.</li>
+        <li>Building proficiency in statistical analysis and machine learning algorithms for data-driven decision making.</li>
+      </ul>
     </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">JUL 2025 — AUG 2025</div>
+      <div class="timeline-title">Odoo ERP Developer Intern</div>
+      <div class="timeline-company">Fudotech · Bengaluru, Karnataka</div>
+      <ul class="timeline-bullets">
+        <li>Developed and customized Odoo ERP modules (CRM, Inventory, POS) using Python and PostgreSQL, improving business process automation.</li>
+        <li>Implemented Docker-based containerized deployments, ensuring scalability across development and production environments.</li>
+        <li>Collaborated in Agile sprints using Jira for task tracking, sprint planning, and cross-functional coordination.</li>
+        <li>Optimized database queries and modular code design to improve ERP system performance and workflow integration.</li>
+      </ul>
+    </div>
+
   </div>
+</div>
 </section>
 
+<!-- PROJECTS -->
 <section id="projects">
-  <div class="container">
-    <h2 class="title">Featured Projects</h2>
-    <div class="grid">
-      <div class="card project-card">
-        <h3>Fruit Spoilage Detection</h3>
-        <p>A Govt. of Karnataka funded IoT device utilizing gas and NIR sensors to grade food freshness.</p>
-        <span class="tech-stack">#Python #TensorFlow #IoT</span>
-      </div>
-      <div class="card project-card">
-        <h3>YOLO Tree Detection</h3>
-        <p>Real-time automotive computer vision system for roadside tree detection and automated spraying.</p>
-        <span class="tech-stack">#OpenCV #YOLOv8 #RaspberryPi</span>
-      </div>
-      <div class="card project-card">
-          <h3>Refurbish.live</h3>
-          <p>Full-stack e-commerce platform for electronics built on Odoo with a PostgreSQL backend.</p>
-            <span class="tech-stack">#Odoo #Docker #Postgres</span>
+  <p class="section-label">// 03 — Work</p>
+  <h2 class="section-title">Featured Projects</h2>
+  <div class="projects-grid">
 
-            <br><br>
-            <a href=" https://nu-inappetent-pseudoeditorially.ngrok-free.dev" class="btn" target="_blank">Live Demo</a>
+    <div class="project-card">
+      <div class="project-num">01</div>
+      <div class="project-title">Fruit Spoilage Detection System</div>
+      <div class="project-desc">IoT-based real-time spoilage detection integrating sensor data and image classification deployed on Raspberry Pi for edge computing inference.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">TensorFlow</span>
+        <span class="stack-tag">OpenCV</span>
+        <span class="stack-tag">Raspberry Pi</span>
+        <span class="stack-tag">IoT</span>
       </div>
     </div>
+
+    <div class="project-card">
+      <div class="project-num">02</div>
+      <div class="project-title">ERP Web Application</div>
+      <div class="project-desc">Full-stack ERP system with procurement, inventory, and sales modules built on Odoo and PostgreSQL, containerized with Docker for scalable deployment.</div>
+      <div class="project-stack">
+        <span class="stack-tag">Odoo</span>
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">PostgreSQL</span>
+        <span class="stack-tag">Docker</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">03</div>
+      <div class="project-title">YOLO-Based Object Detection</div>
+      <div class="project-desc">Real-time object detection model trained end-to-end with YOLOv5 and PyTorch, optimized for reliable inference performance through hyperparameter tuning.</div>
+      <div class="project-stack">
+        <span class="stack-tag">YOLOv5</span>
+        <span class="stack-tag">PyTorch</span>
+        <span class="stack-tag">Python</span>
+        <span class="stack-tag">Computer Vision</span>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<section id="contact">
-  <div class="container" style="text-align: center;">
-    <h2 class="title" style="display: inline-block;">Let's Connect</h2>
-    <div class="card" style="max-width: 500px; margin: 20px auto;">
-      <p><i class="fas fa-map-marker-alt"></i> Davangere, Karnataka, India</p>
-      <p><i class="fas fa-phone"></i> +91 81971 33537</p>
-      <p><i class="fas fa-envelope"></i> santhutsk3@gmail.com</p>
-      <a href="mailto:santhutsk3@gmail.com" class="btn" style="margin-top: 15px;">Email Me</a>
+<!-- EDUCATION -->
+<section id="education" style="background:#faf9f5; max-width:100%; padding:100px 0;">
+<div style="max-width:1280px; margin:0 auto; padding:0 80px;">
+  <p class="section-label">// 04 — Background</p>
+  <h2 class="section-title">Education</h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-year">2022 — 2026</div>
+      <div class="edu-degree">B.E. Electronics & Communication Engineering</div>
+      <div class="edu-inst">GM Institute of Technology<br>Davangere, Karnataka</div>
+      <div class="edu-grade">7.40</div>
+      <div class="edu-grade-label">CGPA / 10</div>
     </div>
+    <div class="edu-card">
+      <div class="edu-year">2020 — 2022</div>
+      <div class="edu-degree">Pre-University Certificate</div>
+      <div class="edu-inst">PCMB Stream<br>Karnataka State Board</div>
+      <div class="edu-grade">84.5%</div>
+      <div class="edu-grade-label">AGGREGATE</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-year">2020</div>
+      <div class="edu-degree">SSLC — 10th Standard</div>
+      <div class="edu-inst">Karnataka State Board</div>
+      <div class="edu-grade">88.8%</div>
+      <div class="edu-grade-label">AGGREGATE</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section>
+  <p class="section-label">// 05 — Credentials</p>
+  <h2 class="section-title">Certifications & Activities</h2>
+  <div class="certs-list">
+    <div class="cert-pill">NPTEL — Integrated Circuits & Op-Amps (2025)</div>
+    <div class="cert-pill">NPTEL — Joy of Computing using Python (2023)</div>
+    <div class="cert-pill">Udemy — Certified Arduino Learner</div>
+    <div class="cert-pill">Generative AI for Learning & Development</div>
+    <div class="cert-pill">Student Volunteer — GM Institute of Technology</div>
   </div>
 </section>
 
+<!-- CONTACT -->
+<div class="contact-section" id="contact">
+  <p class="section-label">// 06 — Let's Connect</p>
+  <h2 class="section-title" style="margin-bottom:12px">Open to Opportunities</h2>
+  <p class="contact-sub">Actively seeking Engineering Analyst / Systems Engineer roles. Feel free to reach out.</p>
+  <div class="contact-links">
+    <a href="mailto:santhutsk3@gmail.com" class="contact-link">✉ santhutsk3@gmail.com</a>
+    <a href="tel:+918197133537" class="contact-link">☏ +91 8197133537</a>
+    <a href="https://www.linkedin.com/in/santhosh-s-s-6847b01b7" target="_blank" class="contact-link">in LinkedIn</a>
+    <a href="https://github.com/santhus3j" target="_blank" class="contact-link">⌥ GitHub</a>
+  </div>
+</div>
+
+<!-- FOOTER -->
 <footer>
-  <p>© 2025 Santhosh S S | Crafted with Pythonic Passion</p>
+  <p>© 2026 SANTHOSH S S — ALL RIGHTS RESERVED</p>
+  <p>BUILT WITH HTML · CSS · JS</p>
 </footer>
 
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+  document.querySelectorAll('a, button, .skill-card, .project-card').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('expand'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('expand'));
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        const delay = entry.target.dataset.delay || 0;
+        setTimeout(() => entry.target.classList.add('visible'), delay);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  const animItems = document.querySelectorAll(
+    '.skill-card, .timeline-item, .project-card, .edu-card, .cert-pill, .stat-item'
+  );
+  animItems.forEach((el, i) => {
+    el.dataset.delay = (i % 4) * 80;
+    observer.observe(el);
+  });
+</script>
 </body>
 </html>
-
-
