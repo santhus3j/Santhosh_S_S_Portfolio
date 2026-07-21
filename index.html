@@ -118,11 +118,11 @@
   .hero-name .line2 { color: var(--accent2); }
   .hero-role {
     margin-top: 28px;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 300;
     color: var(--muted);
     line-height: 1.6;
-    max-width: 440px;
+    max-width: 480px;
     opacity: 0;
     animation: fadeUp 0.7s ease 0.5s forwards;
   }
@@ -423,7 +423,7 @@
   }
 
   /* EDUCATION */
-  .edu-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; background: var(--line); border: 2px solid var(--line); }
+  .edu-grid { display: grid; grid-template-columns: 1fr; gap: 2px; background: var(--line); border: 2px solid var(--line); }
   .edu-card {
     background: var(--card);
     padding: 36px 32px;
@@ -440,12 +440,12 @@
   .edu-degree {
     font-family: 'Syne', sans-serif;
     font-weight: 700;
-    font-size: 0.95rem;
+    font-size: 1.05rem;
     color: var(--ink);
     margin-bottom: 6px;
   }
   .edu-inst {
-    font-size: 0.82rem;
+    font-size: 0.88rem;
     color: var(--muted);
     font-weight: 300;
     margin-bottom: 16px;
@@ -453,7 +453,7 @@
   }
   .edu-grade {
     font-family: 'Syne', sans-serif;
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 800;
     color: var(--ink);
   }
@@ -550,10 +550,6 @@
     from { transform: rotate(0deg); }
     to   { transform: rotate(360deg); }
   }
-  @keyframes pulse-ring {
-    0% { r: 120; opacity: 0.6; }
-    100% { r: 160; opacity: 0; }
-  }
 
   .floating { animation: float 4s ease-in-out infinite; }
   .spinning { animation: spin-slow 18s linear infinite; }
@@ -593,13 +589,13 @@
 <!-- HERO -->
 <div class="hero">
   <div class="hero-left">
-    <p class="hero-tag">// Engineering Analyst · Systems Engineer · Fresher 2026</p>
+    <p class="hero-tag">// Data Analyst · Python Developer · SQL & Power BI</p>
     <h1 class="hero-name">
       Santhosh<br>
       <span class="line2">S S</span>
     </h1>
     <p class="hero-role">
-      ECE graduate with hands-on experience in <strong>Python, Machine Learning, ERP systems,</strong> and <strong>Docker-based deployments</strong>. Building enterprise-grade solutions. Targeting <strong>Famous Companies</strong>.
+      Detail-oriented Data Analyst aspirant & ECE undergraduate (2026). Skilled in <strong>Python, SQL, Power BI,</strong> and <strong>Machine Learning</strong> to transform raw data into actionable business insights.
     </p>
     <div class="hero-cta">
       <a href="#projects" class="btn-primary">View Work</a>
@@ -622,38 +618,38 @@
         <circle cx="250" cy="250" r="72" fill="none" stroke="#d4501a" stroke-width="2"/>
         <!-- Initials -->
         <text x="250" y="244" text-anchor="middle" font-family="Syne, sans-serif" font-size="22" font-weight="800" fill="#f5f3ee" letter-spacing="-1">SSS</text>
-        <text x="250" y="266" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" fill="rgba(245,243,238,0.5)" letter-spacing="3">ECE · 2026</text>
+        <text x="250" y="266" text-anchor="middle" font-family="DM Mono, monospace" font-size="8" fill="rgba(245,243,238,0.5)" letter-spacing="3">DATA ANALYST</text>
 
         <!-- Floating tech nodes -->
         <g class="floating" style="animation-delay:0s">
           <circle cx="250" cy="55" r="28" fill="#d4501a"/>
           <text x="250" y="52" text-anchor="middle" font-family="DM Mono" font-size="7" fill="white" letter-spacing="1">PYTHON</text>
-          <text x="250" y="63" text-anchor="middle" font-family="DM Mono" font-size="7" fill="rgba(255,255,255,0.7)">ML</text>
+          <text x="250" y="63" text-anchor="middle" font-family="DM Mono" font-size="7" fill="rgba(255,255,255,0.7)">Pandas</text>
         </g>
         <g class="floating" style="animation-delay:0.6s">
           <circle cx="419" cy="155" r="26" fill="#1a3d6b"/>
-          <text x="419" y="152" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="white" letter-spacing="0.5">DOCKER</text>
-          <text x="419" y="163" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="rgba(255,255,255,0.7)">ERP</text>
+          <text x="419" y="152" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="white" letter-spacing="0.5">POWER BI</text>
+          <text x="419" y="163" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="rgba(255,255,255,0.7)">KPIs</text>
         </g>
         <g class="floating" style="animation-delay:1.2s">
           <circle cx="399" cy="358" r="26" fill="#d4501a" opacity="0.85"/>
-          <text x="399" y="355" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="white">YOLO</text>
-          <text x="399" y="366" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="rgba(255,255,255,0.7)">PyTorch</text>
+          <text x="399" y="355" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="white">SQL</text>
+          <text x="399" y="366" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="rgba(255,255,255,0.7)">Joins</text>
         </g>
         <g class="floating" style="animation-delay:0.9s">
           <circle cx="250" cy="440" r="26" fill="#1a3d6b" opacity="0.9"/>
-          <text x="250" y="437" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="white">POSTGRES</text>
-          <text x="250" y="448" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="rgba(255,255,255,0.7)">SQL</text>
+          <text x="250" y="437" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="white">EXCEL</text>
+          <text x="250" y="448" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="rgba(255,255,255,0.7)">VLOOKUP</text>
         </g>
         <g class="floating" style="animation-delay:0.3s">
           <circle cx="81" cy="358" r="26" fill="#d4501a" opacity="0.85"/>
-          <text x="81" y="355" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="white">DJANGO</text>
-          <text x="81" y="366" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="rgba(255,255,255,0.7)">REST</text>
+          <text x="81" y="355" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="white">EDA</text>
+          <text x="81" y="366" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="rgba(255,255,255,0.7)">Seaborn</text>
         </g>
         <g class="floating" style="animation-delay:1.5s">
           <circle cx="101" cy="155" r="26" fill="#1a3d6b"/>
-          <text x="101" y="152" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="white">LINUX</text>
-          <text x="101" y="163" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="rgba(255,255,255,0.7)">R-Pi</text>
+          <text x="101" y="152" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="white">ML</text>
+          <text x="101" y="163" text-anchor="middle" font-family="DM Mono" font-size="6.5" fill="rgba(255,255,255,0.7)">Sklearn</text>
         </g>
 
         <!-- Connector lines -->
@@ -676,23 +672,23 @@
 <!-- STATS BAR -->
 <div class="stats-bar">
   <div class="stat-item">
-    <div class="stat-num">3+</div>
-    <div class="stat-label">Projects Delivered</div>
+    <div class="stat-num">3</div>
+    <div class="stat-label">Analytics Projects</div>
   </div>
   <div class="stat-item">
     <div class="stat-num">2</div>
-    <div class="stat-label">Internships</div>
+    <div class="stat-label">Internships / Training</div>
   </div>
   <div class="stat-item">
     <div class="stat-num">7.40</div>
     <div class="stat-label">CGPA / 10</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">5+</div>
+    <div class="stat-num">2+</div>
     <div class="stat-label">Certifications</div>
   </div>
   <div class="stat-item">
-    <div class="stat-num">10+</div>
+    <div class="stat-num">12+</div>
     <div class="stat-label">Tech Skills</div>
   </div>
 </div>
@@ -703,45 +699,45 @@
   <h2 class="section-title">Technical Skills</h2>
   <div class="skills-grid">
     <div class="skill-card">
+      <div class="skill-icon">📊</div>
+      <div class="skill-cat">Data Analysis</div>
+      <div class="skill-tags">
+        <span class="tag">Data Cleaning</span><span class="tag">Data Transformation</span><span class="tag">EDA</span><span class="tag">Statistical Analysis</span><span class="tag">KPI Analysis</span><span class="tag">Business Reporting</span>
+      </div>
+    </div>
+    <div class="skill-card">
       <div class="skill-icon">⌨</div>
-      <div class="skill-cat">Programming Languages</div>
+      <div class="skill-cat">Programming & Libraries</div>
       <div class="skill-tags">
-        <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">C++</span><span class="tag">PostgreSQL</span><span class="tag">Oracle SQL</span>
+        <span class="tag">Python</span><span class="tag">SQL</span><span class="tag">C++</span><span class="tag">Pandas</span><span class="tag">NumPy</span><span class="tag">Matplotlib</span><span class="tag">Seaborn</span>
       </div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon">🌐</div>
-      <div class="skill-cat">Web & Backend</div>
+      <div class="skill-icon">📈</div>
+      <div class="skill-cat">Visualization & BI</div>
       <div class="skill-tags">
-        <span class="tag">Django</span><span class="tag">REST APIs</span><span class="tag">Odoo ERP</span><span class="tag">Web Dev</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🤖</div>
-      <div class="skill-cat">Data Science & ML</div>
-      <div class="skill-tags">
-        <span class="tag">Scikit-learn</span><span class="tag">TensorFlow</span><span class="tag">YOLOv5</span><span class="tag">PyTorch</span><span class="tag">OpenCV</span><span class="tag">Pandas</span><span class="tag">NumPy</span>
-      </div>
-    </div>
-    <div class="skill-card">
-      <div class="skill-icon">🛠</div>
-      <div class="skill-cat">DevOps & Tools</div>
-      <div class="skill-tags">
-        <span class="tag">Docker</span><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Jira</span><span class="tag">Streamlit</span><span class="tag">VS Code</span>
+        <span class="tag">Power BI</span><span class="tag">Tableau (Beginner)</span><span class="tag">Excel</span><span class="tag">Pivot Tables</span><span class="tag">VLOOKUP / XLOOKUP</span><span class="tag">Dashboards</span>
       </div>
     </div>
     <div class="skill-card">
       <div class="skill-icon">🗄</div>
       <div class="skill-cat">Databases</div>
       <div class="skill-tags">
-        <span class="tag">PostgreSQL</span><span class="tag">Oracle SQL Dev</span><span class="tag">MongoDB</span>
+        <span class="tag">PostgreSQL</span><span class="tag">Oracle SQL</span><span class="tag">Snowflake</span><span class="tag">SQL Joins</span><span class="tag">Aggregations</span><span class="tag">Stored Queries</span>
       </div>
     </div>
     <div class="skill-card">
-      <div class="skill-icon">⚙</div>
-      <div class="skill-cat">Hardware & OS</div>
+      <div class="skill-icon">🤖</div>
+      <div class="skill-cat">Machine Learning</div>
       <div class="skill-tags">
-        <span class="tag">Raspberry Pi</span><span class="tag">Arduino</span><span class="tag">Debian Linux</span><span class="tag">8051 MCU</span><span class="tag">PCB Design</span>
+        <span class="tag">Scikit-Learn</span><span class="tag">TensorFlow</span><span class="tag">OpenCV</span><span class="tag">Regression</span><span class="tag">Classification</span><span class="tag">Feature Engineering</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-icon">🛠</div>
+      <div class="skill-cat">Tools & Platforms</div>
+      <div class="skill-tags">
+        <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Docker</span><span class="tag">Linux</span><span class="tag">VS Code</span><span class="tag">PyCharm</span><span class="tag">Jupyter</span>
       </div>
     </div>
   </div>
@@ -751,7 +747,7 @@
 <section id="experience" style="background: #faf9f5; max-width:100%; padding: 100px 0;">
 <div style="max-width:1280px; margin:0 auto; padding: 0 80px;">
   <p class="section-label">// 02 — Journey</p>
-  <h2 class="section-title">Work Experience</h2>
+  <h2 class="section-title">Experience & Professional Training</h2>
   <div class="timeline">
 
     <div class="timeline-item">
@@ -760,9 +756,10 @@
       <div class="timeline-title">Python Data Science Trainee</div>
       <div class="timeline-company">QSpiders · Bengaluru, Karnataka</div>
       <ul class="timeline-bullets">
-        <li>Implementing end-to-end data preprocessing pipelines, visualization dashboards, and ML model evaluation using Scikit-learn, Pandas, and NumPy.</li>
-        <li>Applying supervised and unsupervised ML techniques with feature engineering to improve model accuracy on structured datasets.</li>
-        <li>Building proficiency in statistical analysis and machine learning algorithms for data-driven decision making.</li>
+        <li>Performed data cleaning, preprocessing, exploratory data analysis (EDA), and visualization on structured datasets.</li>
+        <li>Built machine learning models using Scikit-Learn for classification and regression tasks.</li>
+        <li>Worked with SQL databases for querying, aggregation, reporting, and business data analysis.</li>
+        <li>Created dashboards and reports using Power BI, Excel, and Python visualization libraries.</li>
       </ul>
     </div>
 
@@ -770,12 +767,11 @@
       <div class="timeline-dot"></div>
       <div class="timeline-date">JUL 2025 — AUG 2025</div>
       <div class="timeline-title">Odoo ERP Developer Intern</div>
-      <div class="timeline-company">Fudotech · Bengaluru, Karnataka</div>
+      <div class="timeline-company">Fudo Technologies Pvt Limited · Bengaluru, Karnataka</div>
       <ul class="timeline-bullets">
-        <li>Developed and customized Odoo ERP modules (CRM, Inventory, POS) using Python and PostgreSQL, improving business process automation.</li>
-        <li>Implemented Docker-based containerized deployments, ensuring scalability across development and production environments.</li>
-        <li>Collaborated in Agile sprints using Jira for task tracking, sprint planning, and cross-functional coordination.</li>
-        <li>Optimized database queries and modular code design to improve ERP system performance and workflow integration.</li>
+        <li>Worked extensively with PostgreSQL databases, SQL queries, data extraction, and backend reporting workflows.</li>
+        <li>Developed ERP customizations involving data validation, automation, and business process optimization.</li>
+        <li>Used Docker and Linux environments for deployment, testing, and database management.</li>
       </ul>
     </div>
 
@@ -791,38 +787,38 @@
 
     <div class="project-card">
       <div class="project-num">01</div>
-      <div class="project-title">Fruit Spoilage Detection System</div>
-      <div class="project-desc">IoT-based real-time spoilage detection integrating sensor data and image classification deployed on Raspberry Pi for edge computing inference.</div>
+      <div class="project-title">Sales Performance Dashboard and Data Analysis</div>
+      <div class="project-desc">Performed exploratory data analysis on sales datasets to identify trends, customer behavior, and revenue growth opportunities. Developed KPI dashboards and reports using Power BI, SQL, Pandas, and Excel for business decision support.</div>
       <div class="project-stack">
         <span class="stack-tag">Python</span>
-        <span class="stack-tag">TensorFlow</span>
-        <span class="stack-tag">OpenCV</span>
-        <span class="stack-tag">Raspberry Pi</span>
-        <span class="stack-tag">IoT</span>
+        <span class="stack-tag">SQL</span>
+        <span class="stack-tag">Power BI</span>
+        <span class="stack-tag">Excel</span>
+        <span class="stack-tag">EDA</span>
       </div>
     </div>
 
     <div class="project-card">
       <div class="project-num">02</div>
-      <div class="project-title">ERP Web Application</div>
-      <div class="project-desc">Full-stack ERP system with procurement, inventory, and sales modules built on Odoo and PostgreSQL, containerized with Docker for scalable deployment.</div>
+      <div class="project-title">Fruit Spoilage Detection System</div>
+      <div class="project-desc">Collected, cleaned, and analyzed sensor and image datasets for predictive spoilage detection. Applied machine learning and visualization techniques to identify spoilage patterns and improve prediction accuracy.</div>
       <div class="project-stack">
-        <span class="stack-tag">Odoo</span>
         <span class="stack-tag">Python</span>
-        <span class="stack-tag">PostgreSQL</span>
-        <span class="stack-tag">Docker</span>
+        <span class="stack-tag">TensorFlow</span>
+        <span class="stack-tag">Data Analytics</span>
+        <span class="stack-tag">Machine Learning</span>
       </div>
     </div>
 
     <div class="project-card">
       <div class="project-num">03</div>
-      <div class="project-title">YOLO-Based Object Detection</div>
-      <div class="project-desc">Real-time object detection model trained end-to-end with YOLOv5 and PyTorch, optimized for reliable inference performance through hyperparameter tuning.</div>
+      <div class="project-title">Machine Learning Based Tree Detection System</div>
+      <div class="project-desc">Prepared datasets, performed preprocessing, model training, testing, and evaluation using object detection techniques. Analyzed model performance metrics and optimized inference accuracy using Python-based workflows.</div>
       <div class="project-stack">
-        <span class="stack-tag">YOLOv5</span>
-        <span class="stack-tag">PyTorch</span>
+        <span class="stack-tag">YOLO</span>
         <span class="stack-tag">Python</span>
-        <span class="stack-tag">Computer Vision</span>
+        <span class="stack-tag">OpenCV</span>
+        <span class="stack-tag">Model Evaluation</span>
       </div>
     </div>
 
@@ -838,23 +834,9 @@
     <div class="edu-card">
       <div class="edu-year">2022 — 2026</div>
       <div class="edu-degree">B.E. Electronics & Communication Engineering</div>
-      <div class="edu-inst">GM Institute of Technology<br>Davangere, Karnataka</div>
-      <div class="edu-grade">7.40</div>
-      <div class="edu-grade-label">CGPA / 10</div>
-    </div>
-    <div class="edu-card">
-      <div class="edu-year">2020 — 2022</div>
-      <div class="edu-degree">Pre-University Certificate</div>
-      <div class="edu-inst">PCMB Stream<br>Karnataka State Board</div>
-      <div class="edu-grade">84.5%</div>
-      <div class="edu-grade-label">AGGREGATE</div>
-    </div>
-    <div class="edu-card">
-      <div class="edu-year">2020</div>
-      <div class="edu-degree">SSLC — 10th Standard</div>
-      <div class="edu-inst">Karnataka State Board</div>
-      <div class="edu-grade">88.8%</div>
-      <div class="edu-grade-label">AGGREGATE</div>
+      <div class="edu-inst">G M Institute of Technology<br>Davangere, Karnataka</div>
+      <div class="edu-grade">7.40 / 10</div>
+      <div class="edu-grade-label">CGPA</div>
     </div>
   </div>
 </div>
@@ -863,13 +845,10 @@
 <!-- CERTIFICATIONS -->
 <section>
   <p class="section-label">// 05 — Credentials</p>
-  <h2 class="section-title">Certifications & Activities</h2>
+  <h2 class="section-title">Certifications</h2>
   <div class="certs-list">
-    <div class="cert-pill">NPTEL — Integrated Circuits & Op-Amps (2025)</div>
     <div class="cert-pill">NPTEL — Joy of Computing using Python (2023)</div>
-    <div class="cert-pill">Udemy — Certified Arduino Learner</div>
-    <div class="cert-pill">Generative AI for Learning & Development</div>
-    <div class="cert-pill">Student Volunteer — GM Institute of Technology</div>
+    <div class="cert-pill">Udemy — Django Framework (2025)</div>
   </div>
 </section>
 
@@ -877,10 +856,10 @@
 <div class="contact-section" id="contact">
   <p class="section-label">// 06 — Let's Connect</p>
   <h2 class="section-title" style="margin-bottom:12px">Open to Opportunities</h2>
-  <p class="contact-sub">Actively seeking Engineering Analyst / Systems Engineer roles. Feel free to reach out.</p>
+  <p class="contact-sub">Actively seeking Data Analyst / Python Developer / SQL & Power BI roles. Feel free to reach out.</p>
   <div class="contact-links">
     <a href="mailto:santhutsk3@gmail.com" class="contact-link">✉ santhutsk3@gmail.com</a>
-    <a href="tel:+918197133537" class="contact-link">☏ +91 8197133537</a>
+    <a href="tel:+918197133537" class="contact-link">☏ +91 81971 33537</a>
     <a href="https://www.linkedin.com/in/santhosh-s-s-6847b01b7" target="_blank" class="contact-link">in LinkedIn</a>
     <a href="https://github.com/santhus3j" target="_blank" class="contact-link">⌥ GitHub</a>
   </div>
